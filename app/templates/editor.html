@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+  <br>
+  <h2 class="float-start">{{company_name}}</h2>
+  <a href="{% url 'new_service' %}" class="btn btn-dark float-end"><span class="glyphicon glyphicon-plus"></span> Add
+    new</a>
+  <div class="clearfix"></div>
+
+  <hr>
+  <h5 class="float-start">All Services</h5>
+  <p class="float-end">Sharable URL: <a href="{{sharable_url}}"> {{sharable_url}}</a></p>
+  <div class="clearfix"></div>
+  <br>
+
+  {% for item in list %}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{item.name}}</h5>
+      <p class="card-text">{{item.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Price: €{{item.price}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="{% url 'edit_service' forloop.counter0 %}" class="card-link">Edit</a>
+      <a href="{% url 'delete_service' forloop.counter0 %}"" class="card-link">Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+  
+
+</div>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+  <br>
+  <h2 class="float-start">{{company_name}}: Clients</h2>
+  <div class="clearfix"></div>
+
+  {% for client in clients %}
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{client.email}}</h5>
+        <small>€{{client.total_payment}}</small>
+      </div>
+      <p class="mb-1">Service Opted:</p>
+      <ul>
+        {% for service in client.service_opted.services %}
+        <li>{{service.name}}</li>
+        {% endfor %}
+      </ul>
+      <small>{{client.date_created}}</small>
+    </div>
+  </div>
+  <br>
+  {% endfor %}
+
+</div>
+{% endblock content %}

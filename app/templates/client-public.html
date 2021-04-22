@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+  <br><br>
+  {% if success == False %}
+  
+  <h2>{{service.company_name}}</h2>
+  <br>
+  <h5>Please enter your email ID and select the services you want to buy.</h5>
+  <br>
+  <div>
+    <form id="clientPublic" method="POST" action="">
+      {% csrf_token %}
+      <div class="form-group w-500">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" maxlength="150" autocapitalize="none" autofocus=""
+          required="" id="email">
+      </div>
+      <br>
+      {% for item in service.items.menu_items %}
+      <div class="client-selection">
+        <div class="input-group mb-3 input-group-custom">
+          <div class="input-group-prepend">
+            <input class="checkbox-big" type="checkbox" name="service-item" value="{{forloop.counter0}}">
+          </div>
+          <div class="text-container">
+            <h5 class="card-title">{{item.name}}</h5>
+            <span class="card-text">{{item.description}}</span>
+            <br>
+            <b class="price" data-price="{{item.price}}">Price: €{{item.price}}</b>
+          </div>
+        </div>
+      </div>
+      
+      {% endfor %}
+      <div class="clearfix"></div>
+      <br>
+      <button id="buyBtn" type="submit" class="btn btn-primary" disabled>Pay</button>
+      <br>
+    </form>
+  </div>
+
+  {% else %}
+  <!-- Thank you section -->
+  <div class="jumbotron text-center">
+    <h1 class="display-3">Thank You!</h1>
+    <p class="lead"><strong>Call us again!</strong> {{service.company_name}} will always be there for you.</p>
+    <hr>
+    <p>
+      Want to join Service Ecommerce Application? <a href="{% url 'register' %}">Register your company!</a>
+    </p>
+  </div>
+{% endif %}
+</div>
+{% endblock content %}

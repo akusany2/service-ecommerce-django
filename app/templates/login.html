@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="vimeo-wrapper">
+  <iframe src="https://player.vimeo.com/video/422730477?background=1&autoplay=1&loop=1&byline=0&title=0"
+          frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+<div class="container h-100">
+  <div class="form-cotainer center-container">
+
+    <div>
+      <h3 align="center">Login</h3>
+
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          <input type="text" class="form-control" name="username" maxlength="150" autocapitalize="none"
+            autocomplete="username" autofocus="" required="" id="id_username">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="id_password">Password</label>
+          <input type="password" class="form-control" name="password" required=""
+            id="id_password">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <br>
+        {{form.errors}}
+
+        {% for message in messages %}
+          <br>
+          <p>{{message}}</p>
+        {% endfor %}
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock content %}

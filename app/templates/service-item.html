@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+  <br>
+  <h2 class="float-start">Create service</h2>
+  <div class="clearfix"></div>
+
+  <hr>
+  <div class="w-500 mx-auto">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Service name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Service name" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="description">Service description</label>
+        <input type="text" class="form-control" name="description" id="description" placeholder="Service description" required>
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="sr-only" for="price">Price</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">€</div>
+          </div>
+          <input type="text" class="form-control" name="price" id="price" placeholder="Price" required>
+        </div>
+      </div>
+      <br>
+
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+
+
+</div>
+{% endblock content %}
