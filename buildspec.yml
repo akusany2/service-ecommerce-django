@@ -14,7 +14,7 @@ environment_variables:
 phases:
   install:
     commands:
-      - apt-get update -y
+      - yum update -y
       - python --version
   pre_build:
     commands:
