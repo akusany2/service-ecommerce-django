@@ -5,7 +5,7 @@ cd /var/www/serviceapp
 virtualenv -p python3 venv
 source venv/bin/activate
 python -m pip install gunicorn
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python manage.py migrate
 python manage.py collectstatic --no-input
 
