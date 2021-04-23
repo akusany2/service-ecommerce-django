@@ -138,4 +138,5 @@ STATICFILES_DIRS = (
     os.path.join(SETTINGS_PATH, 'app', 'static'),
 )
 SASS_PROCESSOR_ROOT = os.path.join(SETTINGS_PATH, 'app', 'static', 'scss')
+STATIC_ROOT = os.path.join(SETTINGS_PATH, 'app', 'static')
 STATIC_URL = '/static/'
