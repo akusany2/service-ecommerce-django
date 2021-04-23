@@ -7,7 +7,7 @@ source venv/bin/activate
 python -m pip install gunicorn
 python -m pip install -r requirements.txt
 python manage.py migrate
-python manage.py collectstatic --no-input
+# python manage.py collectstatic --no-input
 
 # Set permission for all files
 sudo chown -R www-data:www-data /var/www/
